@@ -23,5 +23,6 @@ class SoundexTest {
     @Test
     fun `Replaces Consonants With Appropriate Digits`() {
         assertEquals(soundex.encode("Ab"), "A100")
+        assertEquals(soundex.encode("Ac"), "A200")
     }
 }
