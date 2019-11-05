@@ -10,7 +10,7 @@ class SoundexTest {
 
     @Test
     fun `retains Sole Letter Of One Letter Word`() {
-        val soundex: Soundex? = Soundex()
+        val soundex: Soundex = Soundex()
 
         val encoded = soundex.encode("A")
     }
