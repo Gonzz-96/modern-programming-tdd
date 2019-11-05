@@ -13,11 +13,11 @@ class Soundex {
     }
 
     private fun encodedDigits(word: String) : String =
-        if(word.length > 1) encodedDigit() else ""
+        if(word.length > 1) encodedDigit(word[1]) else ""
 
-    private fun encodedDigit() : String {
-        return "1"
-    }
+    private fun encodedDigit(letter: Char) : String =
+        if(letter == 'c') "2" else "1"
+
 
     private fun zeroPad(word: String) : String {
         val zerosNeeded = MAX_CODE_LENGTH - word.length
