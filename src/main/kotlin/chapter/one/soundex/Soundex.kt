@@ -15,8 +15,16 @@ class Soundex {
     private fun encodedDigits(word: String) : String =
         if(word.length > 1) encodedDigit(word[1]) else ""
 
-    private fun encodedDigit(letter: Char) : String =
-        if(letter == 'c') "2" else "1"
+    private fun encodedDigit(letter: Char) : String {
+        val encodings = hashMapOf(
+            'b' to "1", 'f' to "1", 'p' to "1", 'v' to "1",
+            'c' to "2", 'g' to "2", 'j' to "2", 'k' to "2", 'q' to "2", 's' to "2", 'x' to "2", 'z' to "2",
+            'd' to "3", 't' to "3",
+            'l' to "4",
+            'm' to "5", 'n' to "5",
+            'r' to "6")
+        return encodings[letter]!!
+    }
 
 
     private fun zeroPad(word: String) : String {
