@@ -17,4 +17,9 @@ class SoundexTest {
 
         assertEquals(encoded, "A")
     }
+
+    @Test
+    fun `Pads With Zeros To Ensure Three Digits`() {
+        
+    }
 }
