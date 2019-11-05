@@ -11,6 +11,7 @@ class SoundexTest {
 
     @Test
     fun `retains Sole Letter Of One Letter Word`() {
+
         val soundex: Soundex = Soundex()
 
         val encoded = soundex.encode("A")
@@ -20,6 +21,11 @@ class SoundexTest {
 
     @Test
     fun `Pads With Zeros To Ensure Three Digits`() {
-        
+
+        val soundex = Soundex()
+
+        val encoded = soundex.encode("I")
+
+        assertEquals(encoded, "I000")
     }
 }
