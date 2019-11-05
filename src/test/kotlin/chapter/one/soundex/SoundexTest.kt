@@ -16,7 +16,7 @@ class SoundexTest {
 
         val encoded = soundex.encode("A")
 
-        assertEquals(encoded, "A")
+        assertEquals(encoded, "A000")
     }
 
     @Test
