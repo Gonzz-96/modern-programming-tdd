@@ -19,4 +19,9 @@ class SoundexTest {
     fun `Pads With Zeros To Ensure Three Digits`() {
         assertEquals(soundex.encode("A"), "I000")
     }
+
+    @Test
+    fun `Replaces Consonants With Appropriate Digits`() {
+        assertEquals(soundex.encode("Ab"), "A100")
+    }
 }
