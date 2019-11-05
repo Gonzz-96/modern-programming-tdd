@@ -17,7 +17,7 @@ class SoundexTest {
 
     @Test
     fun `Pads With Zeros To Ensure Three Digits`() {
-        assertEquals(soundex.encode("A"), "I000")
+        assertEquals(soundex.encode("I"), "I000")
     }
 
     @Test
