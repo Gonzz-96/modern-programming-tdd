@@ -47,9 +47,11 @@ class SoundexTest {
 
     @Test
     fun `Combines duplicate encodings`() {
-        assertEquals(soundex.encodedDigit('b'), soundex.encodedDigit('f'))
-        assertEquals(soundex.encodedDigit('c'), soundex.encodedDigit('g'))
-        assertEquals(soundex.encodedDigit('d'), soundex.encodedDigit('t'))
+
+        assertEquals(soundex.encode("Abcd"), soundex.encode("Afgt"))
+//        assertEquals(soundex.encodedDigit('b'), soundex.encodedDigit('f'))
+//        assertEquals(soundex.encodedDigit('c'), soundex.encodedDigit('g'))
+//        assertEquals(soundex.encodedDigit('d'), soundex.encodedDigit('t'))
 
         //assertEquals(soundex.encode("Abfcgdt"), "A123")
     }
