@@ -24,4 +24,14 @@ class SoundexTest {
     fun `Replaces Consonants With Appropriate Digits`() {
         assertEquals(soundex.encode("Ax"), "A200")
     }
+
+    @Test
+    fun `Ignores non-alphabetic characters`() {
+        assertEquals(soundex.encode("A#"), "A000")
+    }
+
+    @Test
+    fun `Replaces multiple constants with digits`() {
+        assertEquals(soundex.encode("Acdl"), "A234")
+    }
 }

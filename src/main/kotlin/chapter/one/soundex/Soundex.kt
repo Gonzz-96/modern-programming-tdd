@@ -5,7 +5,7 @@ class Soundex {
     private val MAX_CODE_LENGTH = 4
 
     fun encode(word: String) : String {
-        return zeroPad(head(word) + encodedDigits(word))
+        return zeroPad(head(word) + encodedDigits(tail(word)) )
     }
 
     private fun head(word: String) : String {
@@ -13,7 +13,7 @@ class Soundex {
     }
 
     private fun encodedDigits(word: String) : String =
-        if(word.length > 1) encodedDigit(word[1]) else ""
+        if(word.isNotEmpty()) encodedDigit(word[0]) else ""
 
     private fun encodedDigit(letter: Char) : String {
         val encodings = hashMapOf(
@@ -23,12 +23,16 @@ class Soundex {
             'l' to "4",
             'm' to "5", 'n' to "5",
             'r' to "6")
-        return encodings[letter]!!
-    }
 
+        val encode = encodings[letter]
+        return encode ?: ""
+    }
 
     private fun zeroPad(word: String) : String {
         val zerosNeeded = MAX_CODE_LENGTH - word.length
         return word + "0".repeat(zerosNeeded)
     }
+
+    private fun tail(word: String) : String =
+        word.substring(1)
 }
