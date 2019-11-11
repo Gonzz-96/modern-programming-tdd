@@ -1,5 +1,7 @@
 package chapter.one.soundex
 
+import java.lang.StringBuilder
+
 class Soundex {
 
     private val MAX_CODE_LENGTH = 4
@@ -15,8 +17,9 @@ class Soundex {
     private fun encodedDigits(word: String): String =
         buildString {
             for (i in word) {
-                if(length < MAX_CODE_LENGTH - 1)
-                    append(encodedDigit(i))
+                if(length == MAX_CODE_LENGTH - 1) break
+                
+                if(encodedDigit(i) != lastDigit(this)) append(encodedDigit(i))
             }
         }
 
@@ -33,6 +36,9 @@ class Soundex {
         val encode = encodings[letter]
         return encode ?: ""
     }
+
+    private fun lastDigit(s: StringBuilder) : String =
+        if(s.isEmpty()) "" else s.last().toString()
 
     private fun zeroPad(word: String): String {
         val zerosNeeded = MAX_CODE_LENGTH - word.length

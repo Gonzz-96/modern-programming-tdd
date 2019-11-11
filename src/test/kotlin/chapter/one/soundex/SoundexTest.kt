@@ -53,6 +53,6 @@ class SoundexTest {
 //        assertEquals(soundex.encodedDigit('c'), soundex.encodedDigit('g'))
 //        assertEquals(soundex.encodedDigit('d'), soundex.encodedDigit('t'))
 
-        //assertEquals(soundex.encode("Abfcgdt"), "A123")
+        assertEquals(soundex.encode("Abfcgdt"), "A123")
     }
 }
