@@ -20,7 +20,7 @@ class Soundex {
             }
         }
 
-    private fun encodedDigit(letter: Char): String {
+    fun encodedDigit(letter: Char): String {
         val encodings = hashMapOf(
             'b' to "1", 'f' to "1", 'p' to "1", 'v' to "1",
             'c' to "2", 'g' to "2", 'j' to "2", 'k' to "2", 'q' to "2", 's' to "2", 'x' to "2", 'z' to "2",
