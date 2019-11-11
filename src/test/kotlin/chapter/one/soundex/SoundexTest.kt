@@ -37,6 +37,6 @@ class SoundexTest {
 
     @Test
     fun `Limits length to four characters`() {
-        assertEquals(soundex.encode("Dcdlb").length, 4g)
+        assertEquals(soundex.encode("Dcdlb").length, 4)
     }
 }

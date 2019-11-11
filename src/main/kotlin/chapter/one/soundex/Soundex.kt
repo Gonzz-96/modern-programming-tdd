@@ -15,7 +15,8 @@ class Soundex {
     private fun encodedDigits(word: String): String =
         buildString {
             for (i in word) {
-                append(encodedDigit(i))
+                if(length < MAX_CODE_LENGTH - 1)
+                    append(encodedDigit(i))
             }
         }
 
