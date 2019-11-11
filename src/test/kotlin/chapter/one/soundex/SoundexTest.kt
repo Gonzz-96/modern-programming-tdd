@@ -39,4 +39,9 @@ class SoundexTest {
     fun `Limits length to four characters`() {
         assertEquals(soundex.encode("Dcdlb").length, 4)
     }
+
+    @Test
+    fun `Ignores vowel-like letters`() {
+        assertEquals(soundex.encode("Baeiouhycdl"), "B234")
+    }
 }
