@@ -34,4 +34,9 @@ class SoundexTest {
     fun `Replaces multiple constants with digits`() {
         assertEquals(soundex.encode("Acdl"), "A234")
     }
+
+    @Test
+    fun `Limits length to four characters`() {
+        assertEquals(soundex.encode("Dcdlb").length, 4g)
+    }
 }
