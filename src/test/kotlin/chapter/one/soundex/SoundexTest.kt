@@ -44,4 +44,9 @@ class SoundexTest {
     fun `Ignores vowel-like letters`() {
         assertEquals(soundex.encode("Baeiouhycdl"), "B234")
     }
+
+    @Test
+    fun `Combines duplicate encodings`() {
+        assertEquals(soundex.encode("Abfcgdt"), "A123")
+    }
 }
