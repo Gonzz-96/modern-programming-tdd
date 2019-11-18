@@ -55,4 +55,10 @@ class SoundexTest {
 
         assertEquals(soundex.encode("Abfcgdt"), "A123")
     }
+
+    @Test
+    fun `Uppercases first letter`() {
+        println(soundex.encode("abcd"))
+        assertTrue(soundex.encode("abcd").startsWith('A'))
+    }
 }
