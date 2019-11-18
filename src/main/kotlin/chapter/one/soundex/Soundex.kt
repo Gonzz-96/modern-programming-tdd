@@ -7,7 +7,7 @@ class Soundex {
     private val MAX_CODE_LENGTH = 4
 
     fun encode(word: String): String {
-        return zeroPad(head(word) + encodedDigits(tail(word)))
+        return zeroPad(upperFront(head(word)) + encodedDigits(tail(word)))
     }
 
     private fun head(word: String): String {
@@ -47,4 +47,7 @@ class Soundex {
 
     private fun tail(word: String): String =
         word.substring(1)
+
+    private fun upperFront(word: String) : String =
+        word[0].toUpperCase().toString()
 }
