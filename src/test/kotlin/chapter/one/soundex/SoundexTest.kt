@@ -42,7 +42,7 @@ class SoundexTest {
 
     @Test
     fun `Ignores vowel-like letters`() {
-        assertEquals(soundex.encode("Baeiouhycdl"), "B234")
+        assertEquals(soundex.encode("BaAeEiIoOuUhHyYcdl"), "B234")
     }
 
     @Test
