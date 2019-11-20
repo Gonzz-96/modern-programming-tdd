@@ -1,4 +1,4 @@
-package chapter.one.soundex
+package chapter.two.soundex
 
 import org.junit.Assert.*
 import org.junit.Test

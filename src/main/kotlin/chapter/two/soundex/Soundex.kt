@@ -1,4 +1,4 @@
-package chapter.one.soundex
+package chapter.two.soundex
 
 import java.lang.StringBuilder
 
