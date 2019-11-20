@@ -29,14 +29,14 @@ class Soundex {
     }
 
     private fun encodeTail(encoding: StringBuilder, word: String) {
-        for(i in tail(word))
+        for(i in 1 until word.length)
             if(!encoding.isComplete)
-                encodeLetter(encoding, i)
+                encodeLetter(encoding, word[i], word[i - 1])
     }
 
-    private fun encodeLetter(encoding: StringBuilder, letter: Char) {
+    private fun encodeLetter(encoding: StringBuilder, letter: Char, lastLetter: Char) {
         val digit = encodedDigit(letter)
-        if(digit != NOT_AT_DIGIT && digit != lastDigit(encoding))
+        if(digit != NOT_AT_DIGIT && (digit != lastDigit(encoding) || isVowel(lastLetter)) )
             encoding.append(digit)
     }
 
@@ -67,4 +67,7 @@ class Soundex {
 
     private fun upperFront(word: String) : String =
         word[0].toUpperCase().toString()
+
+    private fun isVowel(letter: Char) : Boolean =
+        listOf('a', 'e', 'i', 'o', 'u', 'y').contains(letter.toLowerCase())
 }

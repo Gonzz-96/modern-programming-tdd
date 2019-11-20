@@ -75,6 +75,6 @@ class SoundexTest {
 
     @Test
     fun `Does not combine duplicate encoding separater by vowels`() {
-        assertEquals(soundex.encode("Jbob"), "J101")
+        assertEquals(soundex.encode("Jbob"), "J110")
     }
 }
