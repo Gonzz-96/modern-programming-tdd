@@ -29,13 +29,15 @@ class Soundex {
     }
 
     private fun encodeTail(encoding: StringBuilder, word: String) {
-        for(i in tail(word)) {
-            if(encoding.isComplete) break
+        for(i in tail(word))
+            if(!encoding.isComplete)
+                encodeLetter(encoding, i)
+    }
 
-            val digit = encodedDigit(i)
-            if(digit != NOT_AT_DIGIT && digit != lastDigit(encoding))
-                encoding.append(digit)
-        }
+    private fun encodeLetter(encoding: StringBuilder, letter: Char) {
+        val digit = encodedDigit(letter)
+        if(digit != NOT_AT_DIGIT && digit != lastDigit(encoding))
+            encoding.append(digit)
     }
 
     private fun encodedDigit(letter: Char): String {
