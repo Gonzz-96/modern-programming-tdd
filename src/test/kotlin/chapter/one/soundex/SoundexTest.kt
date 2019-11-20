@@ -66,4 +66,10 @@ class SoundexTest {
     fun `Ignore cases when encoding consonants`() {
         assertEquals(soundex.encode("BCDL"), soundex.encode("Bcdl"))
     }
+
+    @Test
+    fun `Combines duplicate codes when 2nd letter duplicates 1st`() {
+        assertEquals(soundex.encode("Bbcd"), "B230")
+    }
+
 }

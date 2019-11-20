@@ -8,10 +8,10 @@ class Soundex {
     private val NOT_AT_DIGIT = "*"
 
     private val StringBuilder.isComplete : Boolean
-        get() = length == (MAX_CODE_LENGTH - 1)
+        get() = length == MAX_CODE_LENGTH
 
     fun encode(word: String): String {
-        return zeroPad(upperFront(head(word)) + encodedDigits(tail(word)))
+        return zeroPad(upperFront(head(word)) + tail(encodedDigits(word)))
     }
 
     private fun head(word: String): String {
@@ -20,7 +20,8 @@ class Soundex {
 
     private fun encodedDigits(word: String): String =
         buildString {
-            for (i in word) {
+            append(encodedDigit(word.first()))
+            for (i in tail(word)) {
                 if(isComplete) break
 
                 val digit = encodedDigit(i)
