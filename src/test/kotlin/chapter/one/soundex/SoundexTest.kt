@@ -49,6 +49,7 @@ class SoundexTest {
     fun `Combines duplicate encodings`() {
 
         assertEquals(soundex.encode("Abcd"), soundex.encode("Afgt"))
+// That test is equivalent to:
 //        assertEquals(soundex.encodedDigit('b'), soundex.encodedDigit('f'))
 //        assertEquals(soundex.encodedDigit('c'), soundex.encodedDigit('g'))
 //        assertEquals(soundex.encodedDigit('d'), soundex.encodedDigit('t'))
@@ -72,4 +73,8 @@ class SoundexTest {
         assertEquals(soundex.encode("Bbcd"), "B230")
     }
 
+    @Test
+    fun `Does not combine duplicate encoding separater by vowels`() {
+        assertEquals(soundex.encode("Jbob"), "J101")
+    }
 }
