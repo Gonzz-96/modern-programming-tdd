@@ -61,4 +61,9 @@ class SoundexTest {
         println(soundex.encode("abcd"))
         assertTrue(soundex.encode("abcd").startsWith('A'))
     }
+
+    @Test
+    fun `Ignore cases when encoding consonants`() {
+        assertEquals(soundex.encode("BCDL"), soundex.encode("Bcdl"))
+    }
 }

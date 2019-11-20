@@ -39,7 +39,7 @@ class Soundex {
             'r' to "6"
         )
 
-        val encode = encodings[letter]
+        val encode = encodings[letter.toLowerCase()]
         return encode ?: NOT_AT_DIGIT
     }
 
