@@ -5,6 +5,7 @@ import java.lang.StringBuilder
 class Soundex {
 
     private val MAX_CODE_LENGTH = 4
+    private val NOT_AT_DIGIT = "*"
 
     private val StringBuilder.isComplete : Boolean
         get() = length == (MAX_CODE_LENGTH - 1)
@@ -21,8 +22,10 @@ class Soundex {
         buildString {
             for (i in word) {
                 if(isComplete) break
-                
-                if(encodedDigit(i) != lastDigit(this)) append(encodedDigit(i))
+
+                val digit = encodedDigit(i)
+                if(digit != NOT_AT_DIGIT && digit != lastDigit(this))
+                    append(encodedDigit(i))
             }
         }
 
@@ -37,11 +40,11 @@ class Soundex {
         )
 
         val encode = encodings[letter]
-        return encode ?: ""
+        return encode ?: NOT_AT_DIGIT
     }
 
     private fun lastDigit(s: StringBuilder) : String =
-        if(s.isEmpty()) "" else s.last().toString()
+        if(s.isEmpty()) NOT_AT_DIGIT else s.last().toString()
 
     private fun zeroPad(word: String): String {
         val zerosNeeded = MAX_CODE_LENGTH - word.length
