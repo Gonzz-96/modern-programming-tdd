@@ -6,6 +6,9 @@ class Soundex {
 
     private val MAX_CODE_LENGTH = 4
 
+    private val StringBuilder.isComplete : Boolean
+        get() = length == (MAX_CODE_LENGTH - 1)
+
     fun encode(word: String): String {
         return zeroPad(upperFront(head(word)) + encodedDigits(tail(word)))
     }
@@ -17,7 +20,7 @@ class Soundex {
     private fun encodedDigits(word: String): String =
         buildString {
             for (i in word) {
-                if(length == MAX_CODE_LENGTH - 1) break
+                if(isComplete) break
                 
                 if(encodedDigit(i) != lastDigit(this)) append(encodedDigit(i))
             }
