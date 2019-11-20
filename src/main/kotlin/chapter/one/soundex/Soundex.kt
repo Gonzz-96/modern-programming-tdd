@@ -20,15 +20,23 @@ class Soundex {
 
     private fun encodedDigits(word: String): String =
         buildString {
-            append(encodedDigit(word.first()))
-            for (i in tail(word)) {
-                if(isComplete) break
-
-                val digit = encodedDigit(i)
-                if(digit != NOT_AT_DIGIT && digit != lastDigit(this))
-                    append(encodedDigit(i))
-            }
+            encodeHead(this, word)
+            encodeTail(this, word)
         }
+
+    private fun encodeHead(encoding: StringBuilder, word: String) {
+        encoding.append(encodedDigit(word.first()))
+    }
+
+    private fun encodeTail(encoding: StringBuilder, word: String) {
+        for(i in tail(word)) {
+            if(encoding.isComplete) break
+
+            val digit = encodedDigit(i)
+            if(digit != NOT_AT_DIGIT && digit != lastDigit(encoding))
+                encoding.append(digit)
+        }
+    }
 
     private fun encodedDigit(letter: Char): String {
         val encodings = hashMapOf(
