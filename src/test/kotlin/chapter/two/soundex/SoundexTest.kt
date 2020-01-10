@@ -8,6 +8,7 @@ import org.hamcrest.CoreMatchers.*
 import org.hamcrest.Description
 import org.hamcrest.TypeSafeMatcher
 import chapter.two.soundex.MyOwnMatcher.Companion.greaterThanOneHundred
+import java.lang.Exception
 
 @RunWith(JUnit4::class)
 class SoundexTest {
@@ -81,9 +82,16 @@ class SoundexTest {
         assertThat(soundex.encode("Jbob"), `is`(equalTo("J110")))
     }
 
+    // The next tests aren't part of the Soundex test, they are just a playground
+
     @Test
     fun `A number is greater than one hundred`() {
         assertThat(101, `is`( greaterThanOneHundred() ))
+    }
+
+    @Test(expected = Exception::class)
+    fun `Testing with exceptions`() {
+        throwException()
     }
 }
 
@@ -98,4 +106,8 @@ class MyOwnMatcher : TypeSafeMatcher<Int>() {
     companion object {
         fun greaterThanOneHundred() : MyOwnMatcher = MyOwnMatcher()
     }
+}
+
+fun throwException() {
+     throw Exception()
 }
