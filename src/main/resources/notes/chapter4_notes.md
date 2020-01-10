@@ -76,3 +76,8 @@ ASSERT_THAT(actual, Eq("alpha"));
 ```
 
 This assertions is read as follow: ssert that the `actual` value is `equal` to `"alpha"`.
+
+It's ok to expose some members of a class just for testing purposes.
+In kotlin, we have the `internal` modifier, which  is useful to prevent the visibility
+outside the current module.
+
