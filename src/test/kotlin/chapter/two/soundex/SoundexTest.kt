@@ -5,6 +5,9 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 import org.hamcrest.CoreMatchers.*
+import org.hamcrest.Description
+import org.hamcrest.TypeSafeMatcher
+import chapter.two.soundex.MyOwnMatcher.Companion.greaterThanOneHundred
 
 @RunWith(JUnit4::class)
 class SoundexTest {
@@ -76,5 +79,23 @@ class SoundexTest {
     @Test
     fun `Does not combine duplicate encoding separater by vowels`() {
         assertThat(soundex.encode("Jbob"), `is`(equalTo("J110")))
+    }
+
+    @Test
+    fun `A number is greater than one hundred`() {
+        assertThat(101, `is`( greaterThanOneHundred() ))
+    }
+}
+
+class MyOwnMatcher : TypeSafeMatcher<Int>() {
+
+    override fun matchesSafely(item: Int?): Boolean = item ?: 0  > 100
+
+    override fun describeTo(description: Description?) {
+        description?.appendText("not greater than 100")
+    }
+
+    companion object {
+        fun greaterThanOneHundred() : MyOwnMatcher = MyOwnMatcher()
     }
 }
